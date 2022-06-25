@@ -8,12 +8,22 @@
 import Foundation
 
 
-struct MovieList: Decodable{
+struct MovieList: Codable {
     let movieList: [Movie]
 }
 
-struct Movie: Decodable{
-    var image: String
-    var name: String
-    var information: String
+// MARK: - Result
+
+struct Movie: Codable {
+    let originalTitle, overview: String
+    let popularity: Double
+    let posterPath, releaseDate, title: String
+
+    enum CodingKeys: String, CodingKey {
+        case originalTitle = "original_title"
+        case overview, popularity
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case title
+    }
 }

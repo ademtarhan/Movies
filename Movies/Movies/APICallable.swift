@@ -15,5 +15,7 @@ protocol APICallable: AnyObject{
 
 extension APICallable{
     var APIKey: String { return "c51c01d6b237900097f895fb7fd09ed4"}
-    var BaseURL: String { return "https://api.themoviedb.org/3/movie/550?api_key="}
+    var BaseURL: String { return "https://api.themoviedb.org/4/list/"}
+    var PageNum: Int { return 1}
 }
+
