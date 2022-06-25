@@ -7,33 +7,30 @@
 
 import UIKit
 
-protocol ViewControllerImpl: AnyObject{
+protocol ViewControllerImpl: AnyObject {
     var apiCall: APICallImpl? { get }
 }
-class ViewController: UIViewController,APICallable {
 
+class ViewController: UIViewController, APICallable {
     var apiCall: APICallImpl?
-    var movies = [Movie]()
+    var movie = [Movie]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setData()
     }
 
     func setData() {
+        print("set data")
+        //..url
         let url = URL(string: "\(BaseURL)\(APIKey)")!
-        apiCall?.getData(with: url, completionHandler: { movies in
+        print(url)
+        APICall().getData(with: url){ movies in
+           
             if let movies = movies {
-                self.movies = movies
-                DispatchQueue.main.async {
-                    //..code
-                }
+                self.movie = movies
             }
-        })
-        
-        
+            
+        }
     }
-
 }
-
-

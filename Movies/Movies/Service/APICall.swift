@@ -13,24 +13,30 @@ protocol APICallImpl: AnyObject {
 }
 
 class APICall: APICallImpl, APICallable {
-    func getData(with url: URL, completionHandler: @escaping ([Movie]?) -> Void) {
-        let url = URL(string: "\(BaseURL)\(APIKey)")!
+    
+    func getData(with url: URL, completionHandler: @escaping ([Movie]?) -> ()) {
+        //let url = URL(string: "\(BaseURL)\(APIKey)")!
+        print("service18")
         
         
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
             if let error = error {
-                print("Error---\(error)")
-                return
+                print(error.localizedDescription)
+                completionHandler(nil)
+                print("--20service")
             }
-            if let data = data {
-                let movie = try? JSONDecoder().decode(MovieList.self, from: data)
-                completionHandler(movie?.movieList ?? [])
-                print(movie)
+            else if let data = data {
+               let movieList = try? JSONDecoder().decode(MovieList.self, from: data)
+                print("--23service")
+                
+               
+                if let movielist = movieList {
+                    completionHandler(movieList?.movieList)
+                    print("--28service")
+                }
             }
-        }
-        task.resume()
-        
-        
+        }.resume()
         
     }
 }
