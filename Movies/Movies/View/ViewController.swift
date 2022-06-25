@@ -9,11 +9,12 @@ import UIKit
 
 protocol ViewControllerImpl: AnyObject {
     var apiCall: APICallImpl? { get }
+    // var movie: Movie? {get}
 }
 
 class ViewController: UIViewController, APICallable {
     var apiCall: APICallImpl?
-    var movies = [Movie]()
+    var movies: [Result] = []
 
     @IBOutlet var collectionView: UICollectionView!
 
@@ -23,7 +24,6 @@ class ViewController: UIViewController, APICallable {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        
     }
 
     func setData() {
@@ -31,16 +31,14 @@ class ViewController: UIViewController, APICallable {
         // ..url
         let url = URL(string: "\(BaseURL)\(APIKey)")!
         print(url)
-        
-        APICall().getTask(with: url){ movie in
-            if let movies = movie {
-                self.movies = movies
-                print("--42View")
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+
+        APICall().getTask(with: url) { movies in
+
+            self.movies = movies
+            print("--42View")
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
-            
         }
     }
 
@@ -56,6 +54,8 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellView", for: indexPath) as! CellView
         let movie = movies[indexPath.row]
+        cell.setup(movie)
+
         return cell
     }
 
@@ -73,6 +73,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //..
+        // ..
     }
 }

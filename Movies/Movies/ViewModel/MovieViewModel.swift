@@ -38,7 +38,7 @@ extension MovieViewModel{
 }
 
 extension MovieViewModel{
-    var image: String { return self.movie.posterPath}
-    var name: String {return self.movie.title}
-    var information: String {return self.movie.overview}
+    var image: String { return ""}
+    var name: String {return ""}
+    var information: String {return ""}
 }

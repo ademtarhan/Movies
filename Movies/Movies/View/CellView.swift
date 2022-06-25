@@ -8,15 +8,33 @@
 import Foundation
 import UIKit
 
-class CellView: UICollectionViewCell{
+
+
+class CellView: UICollectionViewCell,APICallable{
+    @IBOutlet var labelMovieName: UILabel!
+    @IBOutlet var imageMovie: UIImageView!
+    //var url = URL(string: "https://image.tmdb.org/t/p/w500\(imagePath)")!
+   //..https://image.tmdb.org/t/p/w500
     
-    @IBOutlet weak var labelMovieName: UILabel!
-    @IBOutlet weak var imageMovie: UIImageView!
     
-    func setup(_ movie: Result){
+    func setup(_ movie: Result) {
+        var url = URL(string: "\(imageBaseURL)\(movie.posterPath)")!
         labelMovieName.text = movie.title
-        imageMovie.image = UIImage(named: movie.posterPath)!
+        loadImage(url: url)
     }
-    
-    
+    func loadImage(url: URL){
+        
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data){
+                    DispatchQueue.main.async {
+                        self!.imageMovie.image = image
+                    }
+                }
+            }
+            
+        }
+    }
+
+
 }
