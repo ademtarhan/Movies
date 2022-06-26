@@ -17,33 +17,26 @@ class ViewController: UIViewController, APICallable {
     var movies: [Result] = []
     var movie: Result?
 
-    @IBOutlet var labelMovieTitle: UILabel!
-    @IBOutlet var cellview: UIView!
-    @IBOutlet var cellView: CellView!
     @IBOutlet var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setData()
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
     func setData() {
-        print("set data")
-        // ..url
         let url = URL(string: "\(BaseURL)\(APIKey)")!
         print(url)
 
         APICall().getTask(with: url) { movies in
 
             self.movies = movies
-            print("--42View")
+            print(movies.count)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }

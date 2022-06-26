@@ -15,9 +15,7 @@ class CellView: UICollectionViewCell, APICallable {
     
     func setup(_ movie: Result) {
         var url = URL(string: "\(imageBaseURL)\(movie.posterPath)")!
-        cellView.layer.masksToBounds = true
-        cellView.layer.borderWidth = 3
-        cellView.layer.borderWidth = 2
+       
         labelMovieName.text = movie.title
         loadImage(url: url)
     }
