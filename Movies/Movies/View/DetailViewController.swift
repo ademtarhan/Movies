@@ -19,16 +19,26 @@ class DetailViewController: UIViewController, APICallable {
 
     @IBOutlet var textViewMovieOverview: UITextView!
 
-    let movie: Result! = nil
-
+    var movie: Result?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        imageMoviePoster.layer.cornerRadius = 20
+        imageMoviePoster.clipsToBounds = true
+
+        setUp(movie!)
+        
+        
+    }
 
     func setUp(_ movie: Result) {
         var url = URL(string: "\(imageBaseURL)\(movie.posterPath)")!
         loadImage(url: url)
+        labelMovieTitle.text = movie.title
+        textViewMovieOverview.text = movie.overview
 
-        labelMovieTitle!.text = movie.title
-        textViewMovieOverview!.text = movie.overview
+        print("\(labelMovieTitle)\(textViewMovieOverview)")
     }
 
     func loadImage(url: URL) {
@@ -36,7 +46,7 @@ class DetailViewController: UIViewController, APICallable {
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self!.imageMoviePoster.image = image
+                        self?.imageMoviePoster?.image = image
                     }
                 }
             }

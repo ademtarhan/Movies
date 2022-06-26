@@ -15,6 +15,7 @@ protocol ViewControllerImpl: AnyObject {
 class ViewController: UIViewController, APICallable {
     var apiCall: APICallImpl?
     var movies: [Result] = []
+    var movie: Result?
 
     @IBOutlet var labelMovieTitle: UILabel!
     @IBOutlet var cellview: UIView!
@@ -27,12 +28,10 @@ class ViewController: UIViewController, APICallable {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     func setData() {
@@ -82,9 +81,14 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // ..
         let detail = DetailViewController()
-        let movie = movies[indexPath.row]
-        detail.setUp(movie)
+        movie = movies[indexPath.row]
+        performSegue(withIdentifier: "toDetails", sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailViewController {
+            destination.movie = movie
+        }
     }
 }
