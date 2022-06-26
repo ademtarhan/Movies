@@ -16,6 +16,9 @@ class ViewController: UIViewController, APICallable {
     var apiCall: APICallImpl?
     var movies: [Result] = []
 
+    @IBOutlet var labelMovieTitle: UILabel!
+    @IBOutlet var cellview: UIView!
+    @IBOutlet var cellView: CellView!
     @IBOutlet var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -24,9 +27,11 @@ class ViewController: UIViewController, APICallable {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        
     }
 
     func setData() {
+        labelMovieTitle.text = "movie"
         print("set data")
         // ..url
         let url = URL(string: "\(BaseURL)\(APIKey)")!
@@ -74,5 +79,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // ..
+        let detail = DetailViewController()
+        let movie = movies[indexPath.row]
     }
 }
