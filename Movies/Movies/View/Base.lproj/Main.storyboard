@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="947.82608695652186" y="82.366071428571431"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="WxV-NS-00p">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="9m0-ME-8Im" customClass="ViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9m0-ME-8Im" customClass="DetailViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gNg-OC-hIX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,7 +179,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Nx6-pV-i10"/>
                     <connections>
-                        <outlet property="imageMoviePoster" destination="YQV-7r-kQ3" id="N0P-xF-Xfl"/>
+                        <outlet property="imageMoviePoster" destination="YQV-7r-kQ3" id="jq8-3f-KEg"/>
                         <outlet property="labelMovieTitle" destination="ZS4-EO-cdT" id="Tn8-Le-CHd"/>
                         <outlet property="textViewMovieOverview" destination="0HT-jC-wn2" id="p7V-aE-ofT"/>
                     </connections>

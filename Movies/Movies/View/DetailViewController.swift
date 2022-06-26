@@ -21,29 +21,14 @@ class DetailViewController: UIViewController, APICallable {
 
     let movie: Result! = nil
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        func setData(_ movie: Result) {
-            var url = URL(string: "\(imageBaseURL)\(movie.posterPath)")!
-            loadImage(url: url)
-
-            labelMovieTitle.text = "movie.title"
-            textViewMovieOverview.text = "movie.overview"
-        }
-    }
+    
 
     func setUp(_ movie: Result) {
         var url = URL(string: "\(imageBaseURL)\(movie.posterPath)")!
         loadImage(url: url)
 
-        labelMovieTitle.text = movie.title
-        textViewMovieOverview.text = movie.overview
+        labelMovieTitle!.text = movie.title
+        textViewMovieOverview!.text = movie.overview
     }
 
     func loadImage(url: URL) {

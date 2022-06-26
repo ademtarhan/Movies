@@ -29,9 +29,13 @@ class ViewController: UIViewController, APICallable {
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
 
     func setData() {
-        labelMovieTitle.text = "movie"
         print("set data")
         // ..url
         let url = URL(string: "\(BaseURL)\(APIKey)")!
@@ -81,5 +85,6 @@ extension ViewController: UICollectionViewDelegate {
         // ..
         let detail = DetailViewController()
         let movie = movies[indexPath.row]
+        detail.setUp(movie)
     }
 }
