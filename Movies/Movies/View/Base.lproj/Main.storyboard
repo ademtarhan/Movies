@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellView" id="3Je-P4-bQG" customClass="CellView" customModule="Movies" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellView" id="3Je-P4-bQG" customClass="CollectionViewCell" customModule="Movies" customModuleProvider="target">
                                         <rect key="frame" x="97" y="0.0" width="200" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kbJ-vS-jFU">
@@ -89,7 +89,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="MovieS" id="MXj-9a-kBr"/>
                     <connections>
-                        <outlet property="collectionView" destination="QrV-11-k5c" id="BYr-Ni-j4G"/>
+                        <outlet property="collectionView" destination="QrV-11-k5c" id="sVu-Nf-6vx"/>
                         <segue destination="9m0-ME-8Im" kind="show" identifier="toDetails" id="iR1-tO-DCL"/>
                     </connections>
                 </viewController>

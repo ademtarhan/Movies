@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="CollectionViewCell" customModule="Movies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h3m-Yn-tUd">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GtI-hk-2dC">
+                        <rect key="frame" x="0.0" y="240" width="200" height="60"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" red="0.75686274509999996" green="0.89411764709999997" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="h3m-Yn-tUd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2em-3N-3KF"/>
+                <constraint firstItem="GtI-hk-2dC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6q0-Ai-DXa"/>
+                <constraint firstItem="h3m-Yn-tUd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="909-B1-Qva"/>
+                <constraint firstItem="h3m-Yn-tUd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Hq7-oN-GZb"/>
+                <constraint firstAttribute="trailing" secondItem="h3m-Yn-tUd" secondAttribute="trailing" id="XXV-1E-c0Q"/>
+                <constraint firstAttribute="bottom" secondItem="h3m-Yn-tUd" secondAttribute="bottom" constant="60" id="gJe-bC-aVd"/>
+                <constraint firstAttribute="bottom" secondItem="GtI-hk-2dC" secondAttribute="bottom" id="pWi-ez-SNW"/>
+                <constraint firstItem="GtI-hk-2dC" firstAttribute="top" secondItem="h3m-Yn-tUd" secondAttribute="bottom" id="vZd-Uw-HJZ"/>
+                <constraint firstAttribute="trailing" secondItem="GtI-hk-2dC" secondAttribute="trailing" id="ywV-BU-d9t"/>
+            </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="20"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="imageMovie" destination="h3m-Yn-tUd" id="evb-dE-FaF"/>
+                <outlet property="labelMovieName" destination="GtI-hk-2dC" id="k4k-Kc-MhR"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="81"/>
+        </collectionViewCell>
+    </objects>
+</document>
