@@ -9,51 +9,42 @@ import Foundation
 import UIKit
 
 protocol APICallImpl: AnyObject {
-    func getTask(with url: URL, completion: @escaping ([Result]) -> Void)
-    var pageNum: ViewControllerImpl? {get set}
-    
+    func getMovies(at page: Int, _ completion: @escaping (Result<[MovieResult], Error>) -> Void)
 }
 
-// .. https://api.themoviedb.org/4/list/1?api_key=c51c01d6b237900097f895fb7fd09ed4
-
 class APICall: APICallable {
-    var pageNum: ViewControllerImpl?
+    func getMovies(at page: Int, _ completion: @escaping (Result<[MovieResult], Error>) -> Void) {
+        let endPoint = "\(BaseURL)list/\(page)?api_key=\(APIKey)"
 
-    func getTask(with url: URL, completion: @escaping ([Result]) -> Void) {
-        //for i in 1...10 {
-        
-           // let endPoint = "\(BaseURL)\(i)?api_key=\(APIKey)"
-             let endPoint = "https://api.themoviedb.org/4/list/1?api_key=c51c01d6b237900097f895fb7fd09ed4&page=1"
+        guard let safeURLString = endPoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let endpointURL = URL(string: safeURLString) else {
+            print(MovieError.invalidURL(endPoint))
+            completion(.failure(MovieError.invalidURL(endPoint)))
+            return
+        }
 
-            guard let safeURLString = endPoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-                  let endpointURL = URL(string: safeURLString) else {
-                completion([])
-                print(MovieError.invalidURL(endPoint))
+        URLSession.shared.dataTask(with: endpointURL) { data, _, error in
+            guard error == nil else {
+                print(MovieError.forwarded(error!))
+                completion(.failure(MovieError.forwarded(error!)))
+
                 return
             }
 
-            URLSession.shared.dataTask(with: endpointURL) { data, _, error in
-                guard error == nil else {
-                    completion([])
-                    print(MovieError.forwarded(error as! Error))
-                    return
-                }
+            guard data != nil else {
+                print(MovieError.invalidPayload(endpointURL))
+                completion(.failure(MovieError.invalidPayload(endpointURL)))
+                return
+            }
+            do {
+                let movieResponse = try JSONDecoder().decode(Movie.self, from: data!)
+                let results = movieResponse.results
 
-                guard let responseData = data else {
-                    completion([])
-                    print(MovieError.invalidPayload(endpointURL))
-                    return
-                }
-                do {
-                    let movieResponse = try? JSONDecoder().decode(Movie.self, from: data!)
-                    let results = movieResponse?.results
-                    
-                    completion(results ?? [])
-                } catch {
-                    completion([])
-                    print(MovieError.forwarded(error))
-                }
-            }.resume()
-        }
-   // }
+                completion(.success(results))
+            } catch {
+                print(MovieError.forwarded(error))
+                completion(.failure(MovieError.forwarded(error)))
+            }
+        }.resume()
+    }
 }

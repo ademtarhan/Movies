@@ -18,7 +18,7 @@ class CollectionViewCell: UICollectionViewCell,APICallable {
         // Initialization code
     }
     
-    func setup(_ movie: Result) {
+    func setup(_ movie: MovieResult) {
         var url = URL(string: "\(imageBaseURL)\(movie.posterPath)")!
         labelMovieName.text = movie.title
         loadImage(url: url)

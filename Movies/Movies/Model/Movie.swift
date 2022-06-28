@@ -10,7 +10,7 @@ import Foundation
 
 
 protocol ResultImpl: AnyObject{
-    var movie: Result? {get}
+    var movie: MovieResult? {get}
 }
 
 
@@ -21,7 +21,7 @@ struct MovieList: Codable {
 // MARK: - Welcome
 
 struct Movie: Codable {
-    let results: [Result]
+    let results: [MovieResult]
 }
 
 // MARK: - CreatedBy
@@ -41,7 +41,7 @@ enum ISO639_1: String, Codable {
 
 // MARK: - Result
 
-struct Result: Codable {
+struct MovieResult: Codable {
     let adult: Bool
     let backdropPath: String
     let genreIDS: [Int]

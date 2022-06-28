@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Detail" customModule="Movies" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController" customModule="Movies" customModuleProvider="target">
             <connections>
                 <outlet property="imageMoviePoster" destination="mlH-jA-S3y" id="ZII-IU-j40"/>
                 <outlet property="labelMovieDate" destination="7kR-uk-fHa" id="WSn-Qv-OK5"/>

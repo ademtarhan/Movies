@@ -1,25 +1,27 @@
 //
-//  DetailViewController.swift
+//  Detail.swift
 //  Movies
 //
-//  Created by Adem Tarhan on 25.06.2022.
+//  Created by Adem Tarhan on 27.06.2022.
 //
 
 import Foundation
 import UIKit
 
-protocol DetailViewImpl: AnyObject {
-    var movie: Result! { get }
+protocol DetailImpl: AnyObject {
+    var movie: MovieResult! { get }
 }
 
-class DetailViewController: UIViewController, APICallable {
+class DetailsViewController: UIViewController, APICallable{
+    var movie: MovieResult?
+    
     @IBOutlet var imageMoviePoster: UIImageView!
-
-    @IBOutlet var labelMovieTitle: UILabel!
-
+    @IBOutlet var labelMovieName: UILabel!
+    @IBOutlet var labelMovieDate: UILabel!
+    @IBOutlet var labelMovieVoteAverage: UILabel!
     @IBOutlet var textViewMovieOverview: UITextView!
 
-    var movie: Result?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +34,13 @@ class DetailViewController: UIViewController, APICallable {
         
     }
 
-    func setUp(_ movie: Result) {
+    func setUp(_ movie: MovieResult) {
         var url = URL(string: "\(imageBaseURL)\(movie.posterPath)")!
         loadImage(url: url)
-        labelMovieTitle.text = movie.title
+        labelMovieName.text = movie.title
         textViewMovieOverview.text = movie.overview
+        labelMovieDate.text = movie.releaseDate
+        labelMovieVoteAverage.text = String(movie.voteAverage)
 
     }
 
