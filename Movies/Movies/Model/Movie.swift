@@ -7,6 +7,13 @@
 
 import Foundation
 
+
+
+protocol ResultImpl: AnyObject{
+    var movie: Result? {get}
+}
+
+
 struct MovieList: Codable {
     let movielist: Movie
 }
@@ -39,7 +46,6 @@ struct Result: Codable {
     let backdropPath: String
     let genreIDS: [Int]
     let id: Int
-    let mediaType: MediaType
     let originalLanguage: ISO639_1
     let originalTitle, overview: String
     let popularity: Double
@@ -53,7 +59,6 @@ struct Result: Codable {
         case backdropPath = "backdrop_path"
         case genreIDS = "genre_ids"
         case id
-        case mediaType = "media_type"
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
         case overview, popularity
@@ -65,6 +70,3 @@ struct Result: Codable {
     }
 }
 
-enum MediaType: String, Codable {
-    case movie
-}
