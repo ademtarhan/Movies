@@ -34,7 +34,6 @@ class ViewController: UIViewController, APICallable {
         let url = URL(string: "https://api.themoviedb.org/4/list/1?api_key=c51c01d6b237900097f895fb7fd09ed4&page=1")!
         APICall().getTask(with: url) { movies in
             self.movies = movies
-            print(movies.count)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }

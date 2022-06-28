@@ -38,7 +38,6 @@ class DetailViewController: UIViewController, APICallable {
         labelMovieTitle.text = movie.title
         textViewMovieOverview.text = movie.overview
 
-        print("\(labelMovieTitle)\(textViewMovieOverview)")
     }
 
     func loadImage(url: URL) {

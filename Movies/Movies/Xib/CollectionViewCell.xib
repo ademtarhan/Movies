@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h3m-Yn-tUd">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell" translatesAutoresizingMaskIntoConstraints="NO" id="h3m-Yn-tUd">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GtI-hk-2dC">
@@ -53,4 +53,7 @@
             <point key="canvasLocation" x="139" y="81"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="cell" width="7889" height="9463"/>
+    </resources>
 </document>

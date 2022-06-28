@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mlH-jA-S3y">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail" translatesAutoresizingMaskIntoConstraints="NO" id="mlH-jA-S3y">
                     <rect key="frame" x="20" y="44" width="374" height="540"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="540" id="JZf-dN-pqF"/>
@@ -101,6 +101,7 @@
         </view>
     </objects>
     <resources>
+        <image name="detail" width="14740" height="21275"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

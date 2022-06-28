@@ -42,7 +42,6 @@ class Detail: UIViewController, APICallable{
         labelMovieDate.text = movie.releaseDate
         labelMovieVoteAverage.text = String(movie.voteAverage)
 
-        print("\(labelMovieName)\(textViewMovieOverview)")
     }
 
     func loadImage(url: URL) {

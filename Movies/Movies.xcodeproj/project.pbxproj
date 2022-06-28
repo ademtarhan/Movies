@@ -143,6 +143,7 @@
 		9A46D79928667DE900620C77 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				9A46D7A828667DEB00620C77 /* Info.plist */,
 				9AB58A1F286B24E500D5E992 /* Comman */,
 				9AB58A1E286B24A000D5E992 /* Resource */,
 				9A3F3551286A47870077AD50 /* Xib */,
@@ -213,7 +214,6 @@
 				9A46D79A28667DE900620C77 /* AppDelegate.swift */,
 				9A46D7A328667DEB00620C77 /* Assets.xcassets */,
 				9A46D7A528667DEB00620C77 /* LaunchScreen.storyboard */,
-				9A46D7A828667DEB00620C77 /* Info.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
