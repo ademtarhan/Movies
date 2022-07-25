@@ -23,7 +23,15 @@ class Router {
     }
     
     var details: DetailsViewController{
-        DetailsViewController(nibName: String(describing: DetailsViewController.self), bundle: nil)
+        let view: DetailsViewController = DetailsViewControllerImpl(nibName: String(describing: DetailsViewController.self), bundle: nil)
+        let viewModel: DetailsViewModel = DetailsViewModelImpl()
+        let model: DetailsModel = DetailsModelImpl()
+        view.viewModel = viewModel
+        viewModel.view = view
+        viewModel.model = model
+        return view
     }
+    
+    
     
 }

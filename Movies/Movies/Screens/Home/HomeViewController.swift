@@ -8,6 +8,7 @@
 import UIKit
 
 protocol HomeViewController: AnyObject {
+    var movie: MovieResult? {get set}
     var viewModel: HomeViewModel? {get set}
     func update(movies: [MovieResult])
 }
@@ -33,8 +34,10 @@ class HomeViewControllerImpl: UIViewController, APICallable, HomeViewController 
     }
     
     func update(movies: [MovieResult]) {
-        self.movies.append(contentsOf: movies)
+        //self.movies.append(contentsOf: movies)
+        
         DispatchQueue.main.async {
+            self.movies = movies
             self.collectionView.reloadData()
         }
     }
@@ -62,10 +65,13 @@ extension HomeViewControllerImpl: UICollectionViewDelegateFlowLayout {
 
 extension HomeViewControllerImpl: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let detail = DetailsViewController(nibName: "DetailViewController", bundle: nil)
-//        movie = movies[indexPath.row]
-//        detail.movie = movie
-//        navigationController?.pushViewController(detail, animated: true)
+        
+        let detail = DetailsViewControllerImpl(nibName: "DetailsViewController", bundle: nil)
+        movie = movies[indexPath.row]
+        detail.viewModel?.model?.movie = movie
+        print(movie)
+        //detail.movie = movie
+        navigationController?.pushViewController(detail, animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

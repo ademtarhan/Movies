@@ -12,4 +12,5 @@ enum MovieError: Error{
     case invalidURL(String)
     case invalidPayload(URL)
     case forwarded(Error)
+    case nilMovie(MovieResult)
 }

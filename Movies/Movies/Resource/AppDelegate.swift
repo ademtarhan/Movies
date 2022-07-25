@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// - Initializing root
         private func initRoot() {
             let home = Router.shared.home
+            let details = Router.shared.details
             let root = UINavigationController(rootViewController: home as! UIViewController)
             rootViewController = root
         }

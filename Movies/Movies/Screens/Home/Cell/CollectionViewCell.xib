@@ -50,7 +50,7 @@
                 <outlet property="imageMovie" destination="h3m-Yn-tUd" id="evb-dE-FaF"/>
                 <outlet property="labelMovieName" destination="GtI-hk-2dC" id="k4k-Kc-MhR"/>
             </connections>
-            <point key="canvasLocation" x="139" y="81"/>
+            <point key="canvasLocation" x="137.68115942028987" y="80.357142857142847"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -8,30 +8,30 @@
 import Foundation
 import UIKit
 
-protocol DetailImpl: AnyObject {
-    var movie: MovieResult! { get }
+protocol DetailsViewController: AnyObject {
+    var viewModel: DetailsViewModel? { get set }
+    func setUp(_ movie: MovieResult)
 }
 
-class DetailsViewController: UIViewController, APICallable{
+class DetailsViewControllerImpl: UIViewController, APICallable, DetailsViewController {
+    var viewModel: DetailsViewModel?
+
     var movie: MovieResult?
-    
+
     @IBOutlet var imageMoviePoster: UIImageView!
     @IBOutlet var labelMovieName: UILabel!
     @IBOutlet var labelMovieDate: UILabel!
     @IBOutlet var labelMovieVoteAverage: UILabel!
     @IBOutlet var textViewMovieOverview: UITextView!
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         imageMoviePoster.layer.cornerRadius = 20
         imageMoviePoster.clipsToBounds = true
 
-        setUp(movie!)
-        
-        
+        // setUp(movie!)
+        viewModel?.update()
     }
 
     func setUp(_ movie: MovieResult) {
@@ -41,7 +41,6 @@ class DetailsViewController: UIViewController, APICallable{
         textViewMovieOverview.text = movie.overview
         labelMovieDate.text = movie.releaseDate
         labelMovieVoteAverage.text = String(movie.voteAverage)
-
     }
 
     func loadImage(url: URL) {
